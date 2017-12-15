@@ -1,0 +1,28 @@
+#banner #replayBtn svg *{
+	-webkit-transition:all .12s ease-in;transition:all .12s ease-in !important;
+}
+
+#banner #replayBtn svg{
+	width:20px !important;
+	height:20px !important;
+}
+
+#banner #replayBtn.dark{
+	border:solid 1px #102c52 !important;
+	top:52px !important;
+	right:326px !important;
+	width:20px !important;
+	height:20px !important;
+}
+
+#banner #replayBtn.dark *{
+	stroke:#102c52 !important;
+}
+
+#banner #replayBtn.dark.hover,#banner #replayBtn.dark:hover{
+	border:solid 2px #40a5bd !important;
+}
+
+#banner #replayBtn.dark.hover *,#banner #replayBtn.dark:hover *{
+	stroke:#40a5bd !important;
+}
