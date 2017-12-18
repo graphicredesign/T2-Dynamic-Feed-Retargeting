@@ -8,7 +8,7 @@
 }
 
 #banner #replayBtn.dark{
-	top:61px !important;
+	top:47px !important;
 	
 	/* Added 12-15-17 : Developer - Carey */
 	right:326px; /*Change*/
@@ -35,9 +35,9 @@
 #brandBorders{
 	position: absolute;
 	width: 410px;
-	height: 90px;
+	height: 100%;
 	border-color: white;
-	border-width: 0px 0px 12px 12px;
+	border-width: 0px 0px 16.36px 16.36px;
 	border-style: solid;
 	z-index: 11;
 	pointer-events: none;

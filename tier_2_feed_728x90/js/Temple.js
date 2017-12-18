@@ -1261,6 +1261,7 @@ temple.Banner = function(_super) {
 		//Added 12-14-17 : Developer: Carey
 		replayColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Replay_Button_Color;
 		brandBorders = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Brand_Border;
+		//brandBorders = "no";
 		
 		//********* Added 12-14-18 : Developer - Carey
 		
@@ -1269,6 +1270,8 @@ temple.Banner = function(_super) {
 		}else{
 			document.querySelector("#brandBorders").style.visibility = "hidden";
 			document.querySelector("#banner #replayBtn.dark").style.right = 5 + "px";
+//			document.querySelector("#banner #replayBtn").style.top = 65 + "px !important";
+			document.querySelector("#banner #replayBtn.dark").style.setProperty("top", "65px", "important")
 			console.log("test" + " " + document.querySelector("#replayBtn").style.right)
 		}
 		//********* Added 12-14-17 : Developer - Carey

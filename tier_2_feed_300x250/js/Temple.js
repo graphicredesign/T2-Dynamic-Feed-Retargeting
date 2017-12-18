@@ -5,6 +5,10 @@ var dealer_locator_model;
 var bgZip;
 var origZip;
 
+//Added 12-14-17
+var replayColor;
+var brandBorders;
+
 var __extends = this.__extends || function(d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() {
@@ -972,11 +976,13 @@ temple.Banner = function(_super) {
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Legal_Button_Text = "legal";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Legal_Container_Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Exit_URL = {};
-        this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Exit_URL.Url = "https://www.hyundaiusa.com/sonata/index.aspx";
+        this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Exit_URL.Url = "http://www.incentivesnetwork.net/Delivery/Delivery.aspx?cid=6836&pn=Redirect&siteID=1222&setCampaign=77873TE&hmClckThru=www.hyundaiusa.com/test-drive-offer";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Exit_URL_Mobile = {};
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Master[0].Exit_URL_Mobile.Url = "";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates = [ {} ];
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0]._id = 0;
+		this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Replay_Button_Color = "#fff";
+    	this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Brand_Border = "Yes";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Background_Color = "#FFFFFF";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Logo_Color = "BLUE";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Copy_Color = "#000000";
@@ -988,7 +994,7 @@ temple.Banner = function(_super) {
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Secondary_CTA_Text_Color = "#000000";
         this.devDynamicContent.hyundai_master_feed_T2_Retargeting_Templates[0].Legal_Button_Text_Color = "#666666";
         this.backupURL = "https://www.hyundaiusa.com/";
-    };
+    }; //Replay_Button_Color, Brand_Border
     banner.prototype.setupBanner = function() {
 	
         this.populateElements();
@@ -1056,6 +1062,8 @@ temple.Banner = function(_super) {
         this.videoEndframeSrc = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Master[0].Video_Endframe_Image.Url;
         this.layeredCopy = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Master[0].Copy_Layered;
         this.dealerLocatorModel = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Master[0].Dealer_Locator_Model;
+		
+		
         if (this.template.toLowerCase() == "cashback") {
             this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Master[0].Offer_Copy_4 = "";
         }
@@ -1107,6 +1115,10 @@ temple.Banner = function(_super) {
 		
 		//Added 10-24-17
 		$("#banner").addEventListener("mouseover", this.bannerOverHandler.bind(this), false);
+		
+		//Added 12-15-17
+		document.querySelector(".dark").style.setProperty("border-color", replayColor, "important");
+		document.querySelector(".dark").getElementsByTagName("*")[1].style.stroke = replayColor;
     };
     banner.prototype.onMasterTimelineComplete = function() {
         if (!this.video && this.slideShowImages.length > 1) {
@@ -1169,12 +1181,19 @@ temple.Banner = function(_super) {
         videoCopy.hide();
         replayBtn.show();
     };
+	
+	//***************** Added 12-15-2017 :: Dev - Carey
     banner.prototype.onVideoHover = function() {
-        $("#replayBtn").classList.add("hover");
+    	document.querySelector(".dark").style.setProperty("border-color", "#40a5bd", "important");
+		document.querySelector(".dark").getElementsByTagName("*")[1].style.stroke = "#40a5bd";
     };
     banner.prototype.onVideoHoverOut = function() {
-        $("#replayBtn").classList.remove("hover");
+    	document.querySelector(".dark").style.setProperty("border-color", replayColor, "important");
+		document.querySelector(".dark").getElementsByTagName("*")[1].style.stroke = replayColor;
+		
     };
+	//***************** Added 12-15-2017 :: Dev - Carey
+		
     banner.prototype.onVideoClick = function() {
         if (!this.video) {
             if (this.slideshowCompleted) {
@@ -1242,7 +1261,24 @@ temple.Banner = function(_super) {
     };
     banner.prototype.applyStyling = function(colorScheme) {
         var copyElements = this.getChildElements(copyContainer);
-        this.backgroundColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Background_Color;
+		
+		//Added 12-14-17 : Developer: Carey
+		replayColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Replay_Button_Color;
+		brandBorders = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Brand_Border;
+		
+		//********* Added 12-14-18 : Developer - Carey
+		
+		if(brandBorders == "true" || brandBorders == "yes" || brandBorders == "Yes" || brandBorders == "YES" || brandBorders == "TRUE" || brandBorders == "True" || brandBorders == "t" || brandBorders == "T" || brandBorders == true || brandBorders == "1"){
+			document.querySelector("#brandBorders").style.visibility = "visible";
+		}else{
+			document.querySelector("#brandBorders").style.visibility = "hidden";
+			document.querySelector("#banner #replayBtn.dark").style.right = 5 + "px";
+			console.log("test" + " " + document.querySelector("#replayBtn").style.right)
+		}
+		//********* Added 12-14-17 : Developer - Carey
+
+		
+		this.backgroundColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Background_Color;
         this.logoColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Logo_Color;
         this.copyColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Copy_Color;
         this.ctaBGColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Primary_CTA_Bg_Color;
@@ -1291,10 +1327,15 @@ temple.Banner = function(_super) {
             icon.appendChild(icon_x);
             $(".close_btn")[i].appendChild(icon);
         }
+		
         function makeLine(l) {
             var icon_x = document.createElementNS("http://www.w3.org/2000/svg", "path");
             icon_x.setAttributeNS(null, "d", l);
-            icon_x.setAttribute("stroke", "#ffffff");
+			
+			//***************** added 12-13-17 : Developer - Carey
+            icon_x.setAttribute("stroke", replayColor);
+			//***************** Added 12-12-2017 :: Dev - Carey
+			
             icon_x.setAttribute("stroke-width", "2");
             icon_x.setAttribute("fill-opacity", "0");
             return icon_x;
@@ -1308,6 +1349,7 @@ temple.Banner = function(_super) {
         dealerLocator.style.opacity = "1";
         dealerLocator.style.transitionDuration = "0s";
         dealerLocator.style.top = "250px";
+		
     };
     banner.prototype.buildTimelines = function() {
         this.copyTimeline = new TimelineMax();
