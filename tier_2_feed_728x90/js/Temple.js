@@ -1261,7 +1261,9 @@ temple.Banner = function(_super) {
 		//Added 12-14-17 : Developer: Carey
 		replayColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Replay_Button_Color;
 		brandBorders = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Brand_Border;
-		//brandBorders = "no";
+		
+//		replayColor = "white";
+//		brandBorders = "no";
 		
 		//********* Added 12-14-18 : Developer - Carey
 		

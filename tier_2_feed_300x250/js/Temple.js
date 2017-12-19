@@ -1266,6 +1266,9 @@ temple.Banner = function(_super) {
 		replayColor = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Replay_Button_Color;
 		brandBorders = this.dynamicModule._data.hyundai_master_feed_T2_Retargeting_Templates[0].Brand_Border;
 		
+//		replayColor = "white";
+//		brandBorders = "no";
+		
 		//********* Added 12-14-18 : Developer - Carey
 		
 		if(brandBorders == "true" || brandBorders == "yes" || brandBorders == "Yes" || brandBorders == "YES" || brandBorders == "TRUE" || brandBorders == "True" || brandBorders == "t" || brandBorders == "T" || brandBorders == true || brandBorders == "1"){
@@ -1308,7 +1311,7 @@ temple.Banner = function(_super) {
             temple.utils.createStyle(".ctaFind", "display: none;");
         }
         temple.utils.createStyle(".ctaLearn:hover", "background-color: " + this.ctaHoverBGColor + " !important;");
-        logo.src = "img/logo_" + this.logoColor.toLowerCase() + ".png";
+        logo.src = "img/logo_" + this.logoColor.toLowerCase() + ".svg";
         TweenMax.set(endFrameContainer, {
             className: "+=" + this.template.toLowerCase()
         });
